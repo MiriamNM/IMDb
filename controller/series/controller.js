@@ -1,6 +1,6 @@
-const SerieModel = require('./model');
-
 const axios = require('axios');
+
+const SerieModel = require('./model');
 
 exports.searchSeries = async(req, res) => {
     const { series } = req.params;
