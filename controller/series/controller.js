@@ -22,3 +22,28 @@ exports.addSerie = async (req, res, next) => {
         next(err);
     }
 };
+
+exports.searchAndSaveSeries = async (req, res, next) => {
+    try {
+        const { series } = req.params;
+        const data= await axios.get(`https://imdb-api.com/en/API/SearchSeries/k_9392r6dt/${series}`)
+            .then(res => res.data);
+        if (!data) {
+            return res.status(404)
+        }
+        const newData = await Promise.all(
+            data.results.map(async (item) => {
+                const saveAllSerie = new SerieModel({
+                    idIMDB : item.id,
+                    resultType : item.resultType,
+                    title : item.title,
+                    description : item.description,
+                });
+                return await saveAllSerie.save();
+            })
+        )
+        res.status(201).json(newData);
+    } catch (err) {
+        next(err);
+    }
+};

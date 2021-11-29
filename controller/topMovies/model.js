@@ -5,7 +5,7 @@ const TopMovieSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    resultType: {
+    year: {
         type: String,
         required: true,
     },
@@ -13,7 +13,7 @@ const TopMovieSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    description: {
+    rank: {
         type: String,
         required: true,
     },

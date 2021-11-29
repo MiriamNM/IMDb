@@ -22,3 +22,28 @@ exports.addName = async (req, res, next) => {
         next(err);
     }
 };
+
+exports.searchAndSaveName = async (req, res, next) =>{
+    try {
+        const { name } = req.params;
+        const data= await axios.get(`https://imdb-api.com/en/API/SearchName/k_9392r6dt/${name}`)
+            .then(res => res.data)
+        if (!data) {
+            return res.status(404)
+        }
+        const newData = await Promise.all(
+            data.results.map(async (item) => {
+                const saveAllName = new NameModel({
+                    idIMDB : item.id,
+                    resultType : item.resultType,
+                    title : item.title,
+                    description : item.description,
+                });
+                return await saveAllName.save();
+            })
+        )
+        res.status(201).json(newData);
+    } catch (err) {
+        next(err);
+    }
+};
