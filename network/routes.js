@@ -26,6 +26,7 @@ router.post('/addName', nameController.addName);
 
 router.get('/searchTopMovies', topMoviesController.searchTopMovie);
 router.get('/searchAndSaveTopMovies', topMoviesController.searchAndSaveTopMovies);
+router.get('/searchTop10', topMoviesController.searchTop10);
 router.post('/addTopMovies', topMoviesController.addTopMovie);
 
 module.exports = router;

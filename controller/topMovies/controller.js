@@ -45,3 +45,13 @@ exports.searchAndSaveTopMovies = async (req, res, next) => {
         next(err);
     }
 }
+
+exports.searchTop10 = async (req, res, next) => {
+    try {
+        const limit = parseInt(req.query.limit);
+        const top10 = await TopMovieModel.find().limit(limit);
+        res.status(200).json(top10);
+    }   catch(err) {
+        next(err);
+    }
+}

@@ -19,5 +19,5 @@ const TopMovieSchema = new mongoose.Schema({
     },
 })
 
-const TopMovieModel = mongoose.model('Top Movie',  TopMovieSchema);
+const TopMovieModel = mongoose.model('TopMovie',  TopMovieSchema);
 module.exports = TopMovieModel;
