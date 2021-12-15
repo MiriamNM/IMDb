@@ -49,7 +49,14 @@ exports.searchAndSaveTopMovies = async (req, res, next) => {
 exports.searchTop10 = async (req, res, next) => {
     try {
         const limit = parseInt(req.query.limit);
-        const top10 = await TopMovieModel.find().limit(limit);
+        const page = Math.max(0, req.query.page)
+
+        const top10 = await TopMovieModel
+            .find()
+            .sort({"rank": 1})
+            .skip(limit * page)
+            .limit(limit);
+            
         res.status(200).json(top10);
     }   catch(err) {
         next(err);
