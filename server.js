@@ -3,10 +3,8 @@ const app = express();
 const cors = require('cors');
 const mongoDB = require('./mongoDB/db');
 const { config } = require('./config');
-// const db = require('./db');
 const router = require('./network/routes');
 
-// db(`mongodb+srv://${config.db_user}:${config.db_password}@${config.db_host}/${config.db_name}?retryWrites=true&w=majority`);
 mongoDB.connect();
 app.use(express.json());
 app.use(express.urlencoded({extended : false}));

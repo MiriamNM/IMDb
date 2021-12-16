@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const MovieSchema = new mongoose.Schema({
+const TitleSchema = new mongoose.Schema({
     idIMDB: {
         type: String,
         required: true,
@@ -19,5 +19,5 @@ const MovieSchema = new mongoose.Schema({
     },
 })
 
-const MovieModel = mongoose.model('Movie', MovieSchema);
-module.exports = MovieModel;
+const TitleModel = mongoose.model('Title', TitleSchema);
+module.exports = TitleModel;

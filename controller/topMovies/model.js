@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 
-const MovieSchema = new mongoose.Schema({
+const TopMovieSchema = new mongoose.Schema({
     idIMDB: {
         type: String,
         required: true,
     },
-    resultType: {
+    year: {
         type: String,
         required: true,
     },
@@ -13,11 +13,11 @@ const MovieSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    description: {
-        type: String,
+    rank: {
+        type: Number,
         required: true,
     },
 })
 
-const MovieModel = mongoose.model('Movie', MovieSchema);
-module.exports = MovieModel;
+const TopMovieModel = mongoose.model('TopMovie',  TopMovieSchema);
+module.exports = TopMovieModel;
