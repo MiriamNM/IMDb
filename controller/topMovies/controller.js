@@ -48,16 +48,23 @@ exports.searchAndSaveTopMovies = async (req, res, next) => {
 
 exports.searchTop10 = async (req, res, next) => {
     try {
-        const limit = parseInt(req.query.limit);
-        const page = Math.max(0, req.query.page)
+        // const limit = parseInt(req.query.limit);
+        // const page = Math.max(0, req.query.page);
+
+        // if (req.query.length === 0) {
+        //     const top = await TopMovieModel
+        //     .find()
+        //     .sort({"rank": 1})
+        //     return res.status(200).json(top);
+        // }
 
         const top10 = await TopMovieModel
             .find()
-            .sort({"rank": 1})
-            .skip(limit * page)
-            .limit(limit);
+            // .sort({"rank": 1})
+            // .skip(limit * page)
+            // .limit(limit);
             
-        res.status(200).json(top10);
+        return res.status(200).json(top10);
     }   catch(err) {
         next(err);
     }
